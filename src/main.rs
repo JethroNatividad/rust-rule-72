@@ -37,8 +37,17 @@ fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
             .expect("Failed to read input");
 
         match input.trim().parse() {
-            Ok(value) => break value,
+            Ok(value) => return value,
             Err(_) => println!("Invalid input. Please try again."),
+        }
+    }
+}
+
+fn get_rate() -> f64 {
+    loop {
+        let input: f64 = get_input("What is the rate of return?");
+        if input > 0.0 {
+            return input;
         }
     }
 }
