@@ -49,9 +49,8 @@ fn get_rate() -> f64 {
         if input > 0.0 {
             return input;
         }
+        println!("Invalid input. Please try again.");
     }
 }
 
-fn main() {
-    println!("Hello, world!");
-}
+fn main() {}
