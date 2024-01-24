@@ -55,6 +55,12 @@ fn get_rate() -> f64 {
 
 fn main() {
     // Get rate
+    let rate: f64 = get_rate();
     // calculate rate years
+    let years: f64 = get_return_investment_years(rate)?;
     // print, "It will take {} years to double your initial investment."
+    println!(
+        "It will take {} years to double your initial investment.",
+        years
+    )
 }
