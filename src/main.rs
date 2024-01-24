@@ -6,12 +6,12 @@ use std::io::Write;
 // Process: 72/rate of return
 // Output: It will take n years to double your initial investment.
 
-fn get_return_investment_years(rate: f64) -> Result<f64, &'static str> {
+fn get_return_investment_years(rate: f64) -> f64 {
     if rate < 1.0 {
-        return Err("Invalid Rate");
+        return -1.0;
     }
     let years: f64 = 72.0 / rate;
-    Ok(years)
+    years
 }
 
 #[cfg(test)]
@@ -20,9 +20,9 @@ mod tests {
 
     #[test]
     fn test_get_return_investment_years() {
-        assert_eq!(get_return_investment_years(4.0), Ok(18.0));
-        assert_eq!(get_return_investment_years(10.0), Ok(7.2));
-        assert_eq!(get_return_investment_years(0.0), Err("Invalid Rate"));
+        assert_eq!(get_return_investment_years(4.0), 18.0);
+        assert_eq!(get_return_investment_years(10.0), 7.2);
+        assert_eq!(get_return_investment_years(0.0), -1.0);
     }
 }
 
@@ -45,7 +45,7 @@ fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
 
 fn get_rate() -> f64 {
     loop {
-        let input: f64 = get_input("What is the rate of return?");
+        let input: f64 = get_input("What is the rate of return? ");
         if input > 0.0 {
             return input;
         }
@@ -57,10 +57,11 @@ fn main() {
     // Get rate
     let rate: f64 = get_rate();
     // calculate rate years
-    let years: f64 = get_return_investment_years(rate)?;
+    let years: f64 = get_return_investment_years(rate);
     // print, "It will take {} years to double your initial investment."
+
     println!(
         "It will take {} years to double your initial investment.",
         years
-    )
+    );
 }
