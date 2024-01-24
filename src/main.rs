@@ -53,4 +53,8 @@ fn get_rate() -> f64 {
     }
 }
 
-fn main() {}
+fn main() {
+    // Get rate
+    // calculate rate years
+    // print, "It will take {} years to double your initial investment."
+}
