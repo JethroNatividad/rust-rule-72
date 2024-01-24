@@ -13,7 +13,7 @@ fn get_return_investment_years(rate: f64) -> Result<f64, &'static str> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use super::get_return_investment_years;
 
     #[test]
     fn test_get_return_investment_years() {
